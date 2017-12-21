@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>will it scale lottery</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="//cdn.jsdelivr.net/webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+	<script src="//cdn.jsdelivr.net/webjars/jquery/2.2.1/jquery.min.js"></script>
+	
+	<style type="text/css">
+		.borderless tbody tr:first-child td, .borderless tbody tr:first-child th, .borderless tr:first-child {
+		    border: none;
+		}
+		
+		.longtext {
+			word-break: break-all;
+		}
+		
+		.slot-number {
+			font-size: 7vh;
+		}
+		
+		.game-result {
+			font-size: 3.5vh;
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" th:href="@{/}">Lottery!</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li role="presentation"><a th:href="@{/}" href="#">Spring MVC</a></li>
+					<li role="presentation"><a th:href="@{/cdn-assets/index.html}" href="#">jQuery + REST</a></li>
+				</ul>
+			</div>
+			<!--/.navbar-collapse -->
+		</div>
+	</nav>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Spielen sie in unserer Lotterie!</h1>
+			<p>Jackpot: <span th:text="${currentJackpot}">100BTC</span></p>
+			<p>Preis je Spiel: <span th:text="${pricePerGame}">100BTC</span></p>
+			<p><a th:href="@{/play}">Nochmal Spielen</a></p>
+		</div>
+	</div>
+	<div class="container" role="main">
+		<div class="row">
+			<div class="col-md-4 text-center slot-number">
+				<span th:text="${lotteryGame.row1}"></span>
+			</div>
+			<div class="col-md-4 text-center slot-number">
+				<span th:text="${lotteryGame.row2}"></span>
+			</div>
+			<div class="col-md-4 text-center slot-number">
+				<span th:text="${lotteryGame.row3}"></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-center game-result">
+				<span th:text="${lotteryGame.result.getLotteryResultStatus().toString()}"></span>
+			</div>
+			<div th:if="${lotteryGame.result.getLotteryResultStatus().toString() != 'Blank'}" class="col-md-12 text-center game-result">
+				Sie haben <span th:text="${lotteryGame.ticket.prize}"></span> gewonnen!
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<span th:text="${hostinfo}">Hostinfo</span>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

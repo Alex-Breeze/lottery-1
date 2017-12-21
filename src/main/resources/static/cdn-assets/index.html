@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>will it scale lottery</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="//cdn.jsdelivr.net/webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+	<script src="//cdn.jsdelivr.net/webjars/jquery/2.2.1/jquery.min.js"></script>
+	<script src="/cdn-assets/game.js"></script>
+	
+	<style type="text/css">
+		.borderless tbody tr:first-child td, .borderless tbody tr:first-child th, .borderless tr:first-child {
+		    border: none;
+		}
+		
+		.longtext {
+			word-break: break-all;
+		}
+		
+		.slot-number {
+			font-size: 7vh;
+		}
+		
+		.game-result {
+			font-size: 3.5vh;
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">Lottery!</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li role="presentation"><a href="/" href="#">Spring MVC</a></li>
+					<li role="presentation"><a href="/cdn-assets/index.html" href="#">jQuery + REST</a></li>
+				</ul>
+			</div>
+			<!--/.navbar-collapse -->
+		</div>
+	</nav>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Spielen sie in unserer Lotterie!</h1>
+			<p>Jackpot: <span id="jackpot"></span></p>
+			<p>Preis je Spiel: <span id="pricePerGame"></span></p>
+			<p><a id="playGameButton">Nochmal Spielen</a></p>
+		</div>
+	</div>
+	<div id="game-result-block" class="container" role="main">
+		<div class="col-md-4 text-center slot-number">
+			<span id="game-result-row1"></span>
+		</div>
+		<div class="col-md-4 text-center slot-number">
+			<span id="game-result-row2"></span>
+		</div>
+		<div class="col-md-4 text-center slot-number">
+			<span id="game-result-row3"></span>
+		</div>
+		<div class="col-md-12 text-center game-result">
+			<span id="game-result-outcome"></span>
+		</div>
+		<div id="game-result-sum-block" class="col-md-12 text-center game-result">
+			Sie haben <span id="game-result-sum-span"></span> gewonnen!
+		</div>
+	</div>
+</body>
+
+</html>
