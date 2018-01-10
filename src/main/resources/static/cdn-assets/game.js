@@ -3,14 +3,14 @@
  */
 
 function updatePot() {
-	$.getJSON('/api/pot-info', {}, (pot) => {
+	$.getJSON('/api/pot-info?rnd=' + new Date().getTime(), {}, (pot) => {
 		$('#jackpot').html('' + pot.jackpot);
 		$('#pricePerGame').html('' + pot.pricePerGame);
 	});
 }
 
 function playGame() {
-	$.getJSON('/api/play-game', {}, (game) => {
+	$.getJSON('/api/play-game?rnd=' + new Date().getTime(), {}, (game) => {
 		$('#game-result-outcome').html(game.result.lotteryResultStatus);
 		if(game.result.lotteryResultStatus != 'Blank') {
 			$('#game-result-sum-block').show();
